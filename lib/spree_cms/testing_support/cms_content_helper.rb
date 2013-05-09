@@ -1,11 +1,13 @@
 module CmsContentHelper
 
   def create_cms_content(section_id, title, text, date_avail=Time.now)
+    image = fixture_file_upload("#{::Rails.root}/spec/fixtures/spree_cms/dossier.png", 'image/png')
     Spree::CmsContent.create!({
                                   section_id: section_id,
                                   text: text,
                                   title: title,
-                                  date_available: date_avail
+                                  date_available: date_avail,
+                                  image: image
                               })
   end
 

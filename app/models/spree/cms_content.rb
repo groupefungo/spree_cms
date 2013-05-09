@@ -5,7 +5,7 @@ module Spree
     attr_accessible :title, :text, :section_id, :image, :date_available
     validate :validate_field_base
 
-    has_attached_file :photo,
+    has_attached_file :image,
                       :styles => {:small => '100x100>', :normal => '221x221>', :slider => '970x404>'},
                       :default_style => :page,
                       :url => '/spree/contenus/:id/:style/:basename.:extension',
