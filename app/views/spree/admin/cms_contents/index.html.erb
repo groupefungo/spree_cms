@@ -1,0 +1,31 @@
+<%= render :partial => 'spree/admin/cms_sections/section_tabs', :locals => { :current => 'contents' } %>
+
+<% content_for :page_actions do %>
+    <li>
+      <%= button_link_to t(:new_content), new_admin_section_content_path(@section), :icon => 'icon-plus', :id => 'admin_new_section_content_link' %>
+    </li>
+<% end %>
+
+<table class="index" id="listing_cms_sections" data-hook>
+  <colgroup>
+    <col style="width: 85%">
+    <col style="width: 15%">
+  </colgroup>
+  <thead>
+  <tr data-hook="admin_section_contents_index_headers">
+    <th>Contenu</th>
+    <th data-hook="admin_section_contents_index_header_actions" class="actions"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @section.contents.each do |content|%>
+      <tr id="<%= spree_dom_id content %>" data-hook="admin_section_contents_index_rows" class="<%= cycle('odd', 'even')%>">
+        <td class='content_contenu'><%= content.contenu %></td>
+        <td data-hook="admin_section_contents_index_row_actions" class="actions">
+          <%= link_to_with_icon 'icon-edit', t(:edit), edit_admin_section_content_url(@section, content), :no_text => true, :data => {:action => 'edit'} %>
+          <%= link_to_delete content, { :url => admin_section_content_url(@section, content), :no_text => true } %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

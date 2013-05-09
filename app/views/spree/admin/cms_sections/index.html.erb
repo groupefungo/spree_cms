@@ -1,0 +1,33 @@
+<% content_for :page_title do %>
+    sections CMS
+<% end %>
+
+<% content_for :page_actions do %>
+    <li>
+      <%= button_link_to t(:new_section), new_object_url, :icon => 'icon-plus', :id => 'admin_new_section_link' %>
+    </li>
+<% end %>
+
+<table class="index" id="listing_cms_sections" data-hook>
+  <colgroup>
+    <col style="width: 85%">
+    <col style="width: 15%">
+  </colgroup>
+  <thead>
+  <tr data-hook="admin_cms_sections_index_headers">
+    <th>Code</th>
+    <th data-hook="admin_cms_sections_index_header_actions" class="actions"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @cms_sections.each do |section|%>
+      <tr id="<%= spree_dom_id section %>" data-hook="admin_cms_sections_index_rows" class="<%= cycle('odd', 'even')%>">
+        <td class='section_code'><%= section.code %></td>
+        <td data-hook="admin_cms_sections_index_row_actions" class="actions">
+          <%= link_to_edit section, :no_text => true %>
+          <%= link_to_delete section, :no_text => true %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

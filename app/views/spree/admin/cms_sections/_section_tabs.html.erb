@@ -1,0 +1,21 @@
+<% content_for :page_title do %>
+    Modification de la section '<%= @section.code %>'
+<% end %>
+
+<% content_for :sidebar_title do %>
+    <span class="code"><%= @section.code %></span>
+<% end %>
+
+<% content_for :sidebar do %>
+    <nav class="menu">
+      <ul data-hook="admin_product_tabs">
+        <li<%== ' class="active"' if current == 'section edit' %>>
+          <%= link_to_with_icon 'icon-edit', 'Détails de la section', edit_admin_section_url(@section) %>
+        </li>
+        <li<%== ' class="active"' if current == 'contents' %>>
+          <%= link_to_with_icon 'icon-contenu', 'Contenus', admin_section_contents_url(@section) %>
+        </li>
+      </ul>
+    </nav>
+
+<% end %>

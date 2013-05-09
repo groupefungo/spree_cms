@@ -1,0 +1,19 @@
+<%= render :partial => 'spree/shared/error_messages', :locals => {:target => @section} %>
+
+<%= form_for [:admin, @section], :html => {:multipart => true} do |f| %>
+
+    <fieldset data-hook="new_product">
+
+      <legend align="center"><%= t(:new_product) %></legend>
+
+      <%= f.field_container :code do %>
+          <%= f.label :code, t(:code) %> <span class="required">*</span><br/>
+          <%= f.text_field :code, :class => 'fullwidth title' %>
+          <%= f.error_message_on :code %>
+      <% end %>
+
+      <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+
+    </fieldset>
+
+<% end %>
