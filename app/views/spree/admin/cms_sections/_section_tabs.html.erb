@@ -1,19 +1,19 @@
 <% content_for :page_title do %>
-    Modification de la section '<%= @section.code %>'
+    Modification de la section '<%= @cms_section.code %>'
 <% end %>
 
 <% content_for :sidebar_title do %>
-    <span class="code"><%= @section.code %></span>
+    <span class="code"><%= @cms_section.code %></span>
 <% end %>
 
 <% content_for :sidebar do %>
     <nav class="menu">
-      <ul data-hook="admin_product_tabs">
+      <ul data-hook="admin_cms_section_tabs">
         <li<%== ' class="active"' if current == 'section edit' %>>
-          <%= link_to_with_icon 'icon-edit', 'Détails de la section', edit_admin_section_url(@section) %>
+          <%= link_to_with_icon 'icon-edit', 'Details', edit_admin_cms_section_url(@cms_section) %>
         </li>
         <li<%== ' class="active"' if current == 'contents' %>>
-          <%= link_to_with_icon 'icon-contenu', 'Contenus', admin_section_contents_url(@section) %>
+          <%= link_to_with_icon 'icon-contenu', 'Contents', admin_cms_section_cms_contents_url(@cms_section) %>
         </li>
       </ul>
     </nav>

@@ -1,7 +1,7 @@
 class CreateCmsContent < ActiveRecord::Migration
   def up
     create_table :spree_cms_contents do |t|
-      t.integer :section_id
+      t.integer :cms_section_id
       t.string :title
       t.text :text
       t.date :date_available

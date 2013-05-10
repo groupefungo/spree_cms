@@ -1,9 +1,9 @@
 <%= render :partial => 'spree/admin/cms_sections/section_tabs', :locals => {:current => 'section edit'} %>
-<%= render :partial => 'spree/shared/error_messages', :locals => {:target => @section} %>
+<%= render :partial => 'spree/shared/error_messages', :locals => {:target => @cms_section} %>
 
 <h1>section CMS</h1>
 
-<%= form_for [:admin, @section], :method => :put, :html => {:multipart => true} do |f| %>
+<%= form_for [:admin, @cms_section], :method => :put, :html => {:multipart => true} do |f| %>
 
     <fieldset class="no-border-top">
       <%= f.field_container :code do %>

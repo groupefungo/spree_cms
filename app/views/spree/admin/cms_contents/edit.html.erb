@@ -3,13 +3,13 @@
 <%= render :partial => 'spree/shared/error_messages', :locals => {:target => @content} %>
 
 <% content_for :page_actions do %>
-    <li><%= button_link_to t(:back_to_section_contents_list), admin_section_contents_url(@section), :icon => 'icon-arrow-left' %></li>
+    <li><%= button_link_to t(:back_to_section_contents_list), admin_section_contents_url(@cms_section), :icon => 'icon-arrow-left' %></li>
 <% end %>
 
-<%= form_for [:admin, @section, @content], :html => {:multipart => true} do |f| %>
+<%= form_for [:admin, @cms_section, @content], :html => {:multipart => true} do |f| %>
     <fieldset>
       <legend align="center">Modification de contenu '<%= @content.contenu[0, 30] %>....' de la section CMS
-        '<%= @section.code %>'
+        '<%= @cms_section.code %>'
       </legend>
 
       <div data-hook="admin_section_content_form_fields">
@@ -47,12 +47,12 @@
 
       <div class="clear"></div>
 
-      <%= f.hidden_field :section_id, value: @section.id %>
+      <%= f.hidden_field :section_id, value: @cms_section.id %>
 
       <div class="form-buttons filter-actions actions" data-hook="buttons">
         <%= button t(:update), 'icon-refresh' %>
         <span class="or"><%= t(:or) %></span>
-        <%= link_to_with_icon 'icon-remove', t(:cancel), admin_section_contents_url(@section), :id => 'cancel_link', :class => 'button' %>
+        <%= link_to_with_icon 'icon-remove', t(:cancel), admin_section_contents_url(@cms_section), :id => 'cancel_link', :class => 'button' %>
       </div>
 
     </fieldset>

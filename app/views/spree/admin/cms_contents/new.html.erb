@@ -1,28 +1,28 @@
-<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @content } %>
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @cms_content } %>
 
-<%= form_for [:admin, @section, @content], :html => { :multipart => true } do |f| %>
+<%= form_for [:admin, @cms_section, @cms_content], :html => { :multipart => true } do |f| %>
     <fieldset>
-      <legend align="center">Nouveau contenu de la section CMS '<%= @section.code %>'</legend>
+      <legend align="center">Nouveau contenu de la section CMS '<%= @cms_section.code %>'</legend>
 
       <div data-hook="admin_section_content_form_fields">
         <div class="five columns alpha">
           <div class="field">
-            <%= f.label 'Titre' %><br>
-            <%= f.text_field :titre %>
+            <%= f.label 'Title' %><br>
+            <%= f.text_field :title %>
           </div>
           <div class="field">
             <%= f.label 'Image' %><br>
-            <%= f.file_field :photo %>
+            <%= f.file_field :image %>
           </div>
         </div>
         <div class="five columns omega">
           <div class="field">
-            <%= f.label 'Date' %><br>
-            <%= f.text_field :ref_date, :class => 'datepicker' %>
+            <%= f.label 'Date available' %><br>
+            <%= f.text_field :date_available, :class => 'datepicker' %>
           </div>
         </div>
         <div class="field alpha thirteen columns">
-          <%= f.label 'Texte' %><br>
+          <%= f.label 'Text' %><br>
           <%= f.text_area :text, :rows => 8, :class => 'fullwidth' %>
         </div>
       </div>
@@ -30,12 +30,12 @@
 
       <div class="clear"></div>
 
-      <%= f.hidden_field :section_id, value: @section.id %>
+      <%= f.hidden_field :cms_section_id, value: @cms_section.id %>
 
       <div class="form-buttons filter-actions actions" data-hook="buttons">
         <%= button t(:update), 'icon-refresh' %>
         <span class="or"><%= t(:or) %></span>
-        <%= link_to_with_icon 'icon-remove', t(:cancel), admin_section_contents_url(@section), :id => 'cancel_link', :class => 'button' %>
+        <%= link_to_with_icon 'icon-remove', t(:cancel), admin_cms_section_cms_contents_url(@cms_section), :id => 'cancel_link', :class => 'button' %>
       </div>
 
     </fieldset>

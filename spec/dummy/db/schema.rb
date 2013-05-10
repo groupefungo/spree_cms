@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509023611) do
+ActiveRecord::Schema.define(:version => 20130510131552) do
 
   create_table "spree_activators", :force => true do |t|
     t.string   "description"
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(:version => 20130509023611) do
   end
 
   create_table "spree_cms_contents", :force => true do |t|
-    t.integer  "section_id"
+    t.integer  "cms_section_id"
     t.string   "title"
     t.text     "text"
     t.date     "date_available"
@@ -524,11 +524,13 @@ ActiveRecord::Schema.define(:version => 20130509023611) do
     t.string   "authentication_token"
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "remember_created_at"
     t.datetime "reset_password_sent_at"
     t.datetime "created_at",                                           :null => false
     t.datetime "updated_at",                                           :null => false
+    t.datetime "remember_created_at"
   end
+
+  add_index "spree_users", ["email"], :name => "email_idx_unique", :unique => true
 
   create_table "spree_variants", :force => true do |t|
     t.string   "sku",                                         :default => "",    :null => false

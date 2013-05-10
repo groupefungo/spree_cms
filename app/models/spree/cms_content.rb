@@ -2,7 +2,7 @@ module Spree
   class CmsContent < ActiveRecord::Base
     belongs_to :cms_section
 
-    attr_accessible :title, :text, :section_id, :image, :date_available
+    attr_accessible :title, :text, :cms_section_id, :image, :date_available
     validate :validate_field_base
 
     has_attached_file :image,
@@ -14,7 +14,7 @@ module Spree
 
     def self.find_active_for_section(section_code)
       section = CmsSection.find_by_code(section_code)
-      return where("date_available is not null").order('seq asc').select { |d| d.section_id == section.id } if section
+      return section.cms_contents.where("date_available is not null").order('seq asc') if section
       return []
     end
 

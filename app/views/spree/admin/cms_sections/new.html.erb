@@ -1,6 +1,6 @@
-<%= render :partial => 'spree/shared/error_messages', :locals => {:target => @section} %>
+    <%= render :partial => 'spree/shared/error_messages', :locals => {:target => @cms_section} %>
 
-<%= form_for [:admin, @section], :html => {:multipart => true} do |f| %>
+<%= form_for [:admin, @cms_section], :html => {:multipart => true} do |f| %>
 
     <fieldset data-hook="new_product">
 
