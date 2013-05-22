@@ -33,7 +33,7 @@
       <%= f.hidden_field :cms_section_id, value: @cms_section.id %>
 
       <div class="form-buttons filter-actions actions" data-hook="buttons">
-        <%= button t(:update), 'icon-refresh' %>
+        <%= button t(:create), 'icon-refresh' %>
         <span class="or"><%= t(:or) %></span>
         <%= link_to_with_icon 'icon-remove', t(:cancel), admin_cms_section_cms_contents_url(@cms_section), :id => 'cancel_link', :class => 'button' %>
       </div>
