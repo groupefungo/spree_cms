@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'Cms section contents' do
 
-  scenario 'listing' do
+  scenario 'listing', js: true do
     content1 = OpenStruct.new(title: 'test title1', text: 'some text 1')
     content2 = OpenStruct.new(title: 'test title2', text: 'some text 2')
 
@@ -14,6 +14,8 @@ feature 'Cms section contents' do
       within "#listing_cms_section_cms_contents #spree_cms_content_#{c.id}" do
         expect(page).to have_css('.content_title', text: c.title)
         expect(page).to have_css('.content_text', text: c.text)
+        expect(page).to have_css('.content_date_available', text: c.date_available.to_s)
+        expect(page).to have_css(".content_image img[src='/spree/contenus/#{c.id}/small/#{c.image_file_name}']")
       end
     end
   end
