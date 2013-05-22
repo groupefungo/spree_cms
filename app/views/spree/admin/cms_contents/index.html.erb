@@ -29,7 +29,7 @@
   <% @cms_section.cms_contents.each do |content|%>
       <tr id="<%= spree_dom_id content %>" data-hook="admin_cms_section_cms_contents_index_rows" class="<%= cycle('odd', 'even')%>">
         <td class='content_title'><%= content.title %></td>
-        <td class='content_text'><%= "#{content.text[0,100]}..." if content.text %></td>
+        <td class='content_text'><%= content.text.blank? ? '' : "#{content.text[0,100]}..." %></td>
         <td class='content_date_available'><%= content.date_available %></td>
         <td class='content_image'><img src="/spree/contenus/<%= content.id %>/small/<%= content.image_file_name %>"/></td>
         <td data-hook="admin_section_contents_index_row_actions" class="actions">
