@@ -2,9 +2,9 @@ require 'spec_helper'
 
 feature 'Cms section contents' do
 
-  scenario 'listing', js: true do
+  scenario 'listing' do
     content1 = OpenStruct.new(title: 'test title1', text: 'some text 1')
-    content2 = OpenStruct.new(title: 'test title2', text: nil)
+    content2 = OpenStruct.new(title: 'test title2', text: nil, set_image: false)
 
     navigate_admin_cms_section_contents('test', content1, content2)
 
@@ -20,7 +20,12 @@ feature 'Cms section contents' do
         end
 
         expect(page).to have_css('.content_date_available', text: c.date_available.to_s)
-        expect(page).to have_css(".content_image img[src='/spree/contenus/#{c.id}/small/#{c.image_file_name}']")
+
+        if (!c.image_file_name)
+          expect(page).to have_no_css(".content_image img")
+        else
+          expect(page).to have_css(".content_image img[src='/spree/contenus/#{c.id}/small/#{c.image_file_name}']")
+        end
       end
     end
   end

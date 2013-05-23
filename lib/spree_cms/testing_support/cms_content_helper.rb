@@ -1,7 +1,12 @@
 module CmsContentHelper
 
-  def create_cms_content(section_id, title, text=nil, date_avail=Time.now)
-    image = fixture_file_upload("#{::Rails.root}/spec/fixtures/cms_content_test.png", 'image/png')
+  def create_cms_content(section_id, title, text=nil, date_avail=Time.now, set_image=true)
+    set_image = true if set_image.nil?
+    image = nil
+    if set_image
+      image = fixture_file_upload("#{::Rails.root}/spec/fixtures/cms_content_test.png", 'image/png')
+    end
+
     Spree::CmsContent.create!({
                                   cms_section_id: section_id,
                                   text: text,

@@ -5,7 +5,7 @@ module SpreeCmsSpecHelper
 
     if contents
       section = fetch_cms_section(section_code)
-      contents.each{ |c| create_cms_content(section.id, c.title, c.text) }
+      contents.each{ |c| create_cms_content(section.id, c.title, c.text, Time.now, c.try(:set_image)) }
     end
 
     navigate_admin
