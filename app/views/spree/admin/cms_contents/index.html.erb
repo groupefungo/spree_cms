@@ -14,8 +14,8 @@
     <col style="width: 45%">
     <col style="width: 10%">
     <col style="width: 10%">
-    <col style="width: 15%">
     <col style="width: 5%">
+    <col style="width: 15%">
   </colgroup>
   <thead>
   <tr data-hook="admin_section_contents_index_headers">
@@ -38,11 +38,11 @@
               <img src="/spree/contenus/<%= content.id %>/small/<%= content.image_file_name %>"/>
           <% end %>
         </td>
+        <td class='content_seq'><%= content.seq %></td>
         <td data-hook="admin_section_contents_index_row_actions" class="actions">
           <%= link_to_with_icon 'icon-edit', t(:edit), edit_admin_cms_section_cms_content_url(@cms_section, content), :no_text => true, :data => {:action => 'edit'} %>
           <%= link_to_delete content, {:url => admin_cms_section_cms_content_url(@cms_section, content), :no_text => true} %>
         </td>
-        <td class='content_seq'><%= content.seq %></td>
       </tr>
   <% end %>
   </tbody>
