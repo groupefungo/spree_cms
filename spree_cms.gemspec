@@ -1,15 +1,15 @@
 # encoding: UTF-8
 Gem::Specification.new do |s|
-  s.platform    = Gem::Platform::RUBY
-  s.name        = 'spree_cms'
-  s.version     = '1.3.11'
-  s.summary     = 'spree content management'
+  s.platform = Gem::Platform::RUBY
+  s.name = 'spree_cms'
+  s.version = '1.3.12'
+  s.summary = 'spree content management'
   s.description = ''
   s.required_ruby_version = '>= 1.8.7'
 
-  s.author    =  'Nicolas Pineault'
-  s.email     = 'nicolaspineault@gmail.com'
-  s.homepage  = 'http://fungo.ca'
+  s.author = 'Nicolas Pineault'
+  s.email = 'nicolaspineault@gmail.com'
+  s.homepage = 'http://fungo.ca'
 
   #s.files       = `git ls-files`.split("\n")
   #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'coffee-rails'
   s.add_development_dependency 'factory_girl', '~> 2.6.4'
   s.add_development_dependency 'ffaker'
-  s.add_development_dependency 'rspec-rails',  '~> 2.9'
+  s.add_development_dependency 'rspec-rails', '~> 2.9'
   s.add_development_dependency 'sass-rails'
   s.add_development_dependency 'sqlite3'
 end

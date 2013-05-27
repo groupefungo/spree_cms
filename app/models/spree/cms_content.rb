@@ -25,7 +25,7 @@ module Spree
     end
 
     def text_html
-      self.text.gsub(/\n/, '<br/>').html_safe if self.text
+      self.text.html_safe if self.text
     end
   end
 end

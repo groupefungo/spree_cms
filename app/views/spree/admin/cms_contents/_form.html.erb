@@ -1,8 +1,9 @@
-<%= javascript_include_tag "http://js.nicedit.com/nicEdit-latest.js" %>
+<%= javascript_include_tag 'admin/ckeditor/ckeditor' %>
 <%= javascript_tag do %>
-    bkLib.onDomLoaded(nicEditors.allTextAreas);
+    $(document).ready(function() {
+    CKEDITOR.replace('cms_content_text');
+    });
 <% end %>
-<%= stylesheet_link_tag 'spree_cms/admin/cms_contents' %>
 
 <div data-hook="admin_section_content_form_fields">
   <div class="five columns alpha">
