@@ -50,7 +50,11 @@ feature 'Cms section contents' do
     navigate_admin_cms_section_contents('test', content1, content2)
     find('a[data-action="edit"]').click
 
-    find(:css, 'form#edit_cms_content_1')
     expect(page).to have_css('form#edit_cms_content_1')
+    expect(page).to have_css('#cms_content_title')
+    expect(page).to have_css('#cms_content_date_available')
+    expect(page).to have_css('#cms_content_image')
+    expect(page).to have_css('#cms_content_text')
+    expect(page).to have_css('#cms_content_seq')
   end
 end

@@ -1,5 +1,7 @@
-<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
-<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
+<%= javascript_include_tag "http://js.nicedit.com/nicEdit-latest.js" %>
+<%= javascript_tag do %>
+    bkLib.onDomLoaded(nicEditors.allTextAreas);
+<% end %>
 <%= stylesheet_link_tag 'spree_cms/admin/cms_contents' %>
 
 <div data-hook="admin_section_content_form_fields">
@@ -26,6 +28,11 @@
           <img src="/spree/contenus/<%= @cms_content.id %>/normal/<%= @cms_content.image_file_name %>"/>
       <% end %>
     </div>
+  </div>
+  <div class="field alpha thirteen columns">
+    <%= f.label 'Sequence' %>
+    <br>
+    <%= f.text_field :seq %>
   </div>
   <div class="field alpha thirteen columns">
     <%= f.label 'Text' %>

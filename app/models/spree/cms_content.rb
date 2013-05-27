@@ -2,7 +2,7 @@ module Spree
   class CmsContent < ActiveRecord::Base
     belongs_to :cms_section
 
-    attr_accessible :title, :text, :cms_section_id, :image, :date_available
+    attr_accessible :title, :text, :cms_section_id, :image, :date_available, :seq
     validate :validate_field_base
 
     has_attached_file :image,
