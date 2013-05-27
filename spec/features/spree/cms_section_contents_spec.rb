@@ -3,14 +3,15 @@ require 'spec_helper'
 feature 'Cms section contents' do
 
   scenario 'listing' do
-    content1 = OpenStruct.new(title: 'test title1', text: 'some text 1')
-    content2 = OpenStruct.new(title: 'test title2', text: nil, set_image: false)
+    content1 = OpenStruct.new(title: 'test title1', text: 'some text 1', seq: 3)
+    content2 = OpenStruct.new(title: 'test title2', set_image: false, seq: 1)
 
     navigate_admin_cms_section_contents('test', content1, content2)
 
     expect(page).to have_css('#listing_cms_section_cms_contents')
 
-    Spree::CmsSection.where(code: 'test')[0].cms_contents.each do |c|
+    db_contents = Spree::CmsSection.where(code: 'test')[0].cms_contents
+    db_contents.each do |c|
       within "#listing_cms_section_cms_contents #spree_cms_content_#{c.id}" do
         expect(page).to have_css('.content_title', text: c.title)
 
@@ -27,9 +28,13 @@ feature 'Cms section contents' do
           expect(page).to have_css(".content_image img[src='/spree/contenus/#{c.id}/small/#{c.image_file_name}']")
         end
 
-        expect(page).to have_css('.content_seq', text: c.seq)
+        expect(page).to have_css('.content_seq', text: c.seq.to_s)
       end
     end
+
+    seqs = all(:css, '.content_seq')
+    seqs[0].text.should == '1'
+    seqs[1].text.should == '3'
   end
 
   scenario 'add' do

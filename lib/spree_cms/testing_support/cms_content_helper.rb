@@ -1,25 +1,27 @@
 module CmsContentHelper
 
-  def create_cms_content(section_id, title, text=nil, date_avail=Time.now, set_image=true)
-    set_image = true if set_image.nil?
+  def create_cms_content(content)
+    set_image = true if content.set_image.nil?
     image = nil
     if set_image
       image = fixture_file_upload("#{::Rails.root}/spec/fixtures/cms_content_test.png", 'image/png')
     end
 
     Spree::CmsContent.create!({
-                                  cms_section_id: section_id,
-                                  text: text,
-                                  title: title,
-                                  date_available: date_avail,
-                                  image: image
+                                  cms_section_id: content.cms_section_id,
+                                  text: content.text,
+                                  title: content.title,
+                                  date_available: content.date_avail||Time.now,
+                                  image: image,
+                                  seq: content.seq
                               })
   end
 
-  def create_cms_content_in_new_section(section_code, content_title, content_text=nil)
+  def create_cms_content_in_new_section(section_code, content)
     create_cms_sections(section_code)
     section = fetch_cms_section(section_code)
-    create_cms_content(section.id, content_title, content_text)
+    content.cms_section_id = section.id
+    create_cms_content(content)
     section.id
   end
 
