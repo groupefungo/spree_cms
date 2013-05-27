@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.name = 'spree_cms'
-  s.version = '1.3.12'
+  s.version = '1.3.13'
   s.summary = 'spree content management'
   s.description = ''
   s.required_ruby_version = '>= 1.8.7'
