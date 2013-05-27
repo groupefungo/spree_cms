@@ -43,13 +43,14 @@ feature 'Cms section contents' do
     Spree::CmsContent.all.count.should == 1
   end
 
-  scenario 'edit' do
+  scenario 'edit', js: true do
     content1 = OpenStruct.new(title: 'test title1', text: 'some text 1')
     content2 = OpenStruct.new(title: 'test title2', text: 'some text 2')
 
     navigate_admin_cms_section_contents('test', content1, content2)
     find('a[data-action="edit"]').click
 
+    find(:css, 'form#edit_cms_content_1')
     expect(page).to have_css('form#edit_cms_content_1')
   end
 end
