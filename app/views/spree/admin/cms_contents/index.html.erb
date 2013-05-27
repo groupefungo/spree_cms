@@ -11,10 +11,11 @@
 <table class="index" id="listing_cms_section_cms_contents" data-hook>
   <colgroup>
     <col style="width: 15%">
-    <col style="width: 50%">
+    <col style="width: 45%">
     <col style="width: 10%">
     <col style="width: 10%">
     <col style="width: 15%">
+    <col style="width: 5%">
   </colgroup>
   <thead>
   <tr data-hook="admin_section_contents_index_headers">
@@ -22,6 +23,7 @@
     <th>Text</th>
     <th>Date</th>
     <th>Image</th>
+    <th>Seq</th>
     <th data-hook="admin_section_contents_index_header_actions" class="actions"></th>
   </tr>
   </thead>
@@ -40,6 +42,7 @@
           <%= link_to_with_icon 'icon-edit', t(:edit), edit_admin_cms_section_cms_content_url(@cms_section, content), :no_text => true, :data => {:action => 'edit'} %>
           <%= link_to_delete content, {:url => admin_cms_section_cms_content_url(@cms_section, content), :no_text => true} %>
         </td>
+        <td class='content_seq'><%= content.seq %></td>
       </tr>
   <% end %>
   </tbody>

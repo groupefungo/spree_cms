@@ -26,6 +26,8 @@ feature 'Cms section contents' do
         else
           expect(page).to have_css(".content_image img[src='/spree/contenus/#{c.id}/small/#{c.image_file_name}']")
         end
+
+        expect(page).to have_css('.content_seq', text: c.seq)
       end
     end
   end
@@ -43,7 +45,7 @@ feature 'Cms section contents' do
     Spree::CmsContent.all.count.should == 1
   end
 
-  scenario 'edit', js: true do
+  scenario 'edit' do
     content1 = OpenStruct.new(title: 'test title1', text: 'some text 1')
     content2 = OpenStruct.new(title: 'test title2', text: 'some text 2')
 
