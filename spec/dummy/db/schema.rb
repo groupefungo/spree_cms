@@ -11,7 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130510131552) do
+ActiveRecord::Schema.define(:version => 20130529132718) do
+
+  create_table "ckeditor_assets", :force => true do |t|
+    t.string   "data_file_name",                  :null => false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    :limit => 30
+    t.string   "type",              :limit => 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
   create_table "spree_activators", :force => true do |t|
     t.string   "description"
@@ -91,6 +107,18 @@ ActiveRecord::Schema.define(:version => 20130510131552) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
+
+  create_table "spree_cms_content_translations", :force => true do |t|
+    t.integer  "spree_cms_content_id"
+    t.string   "locale"
+    t.string   "title"
+    t.text     "text"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "spree_cms_content_translations", ["locale"], :name => "index_spree_cms_content_translations_on_locale"
+  add_index "spree_cms_content_translations", ["spree_cms_content_id"], :name => "index_3cdb513819543cb2e797979b3e4ca81381f539e1"
 
   create_table "spree_cms_contents", :force => true do |t|
     t.integer  "cms_section_id"
@@ -524,13 +552,11 @@ ActiveRecord::Schema.define(:version => 20130510131552) do
     t.string   "authentication_token"
     t.string   "unlock_token"
     t.datetime "locked_at"
+    t.datetime "remember_created_at"
     t.datetime "reset_password_sent_at"
     t.datetime "created_at",                                           :null => false
     t.datetime "updated_at",                                           :null => false
-    t.datetime "remember_created_at"
   end
-
-  add_index "spree_users", ["email"], :name => "email_idx_unique", :unique => true
 
   create_table "spree_variants", :force => true do |t|
     t.string   "sku",                                         :default => "",    :null => false

@@ -5,3 +5,8 @@ Spree::Core::Engine.routes.prepend do
     end
   end
 end
+
+SpreeCms::Engine.routes.prepend do
+  mount Ckeditor::Engine => '/ckeditor'
+end
+

@@ -8,5 +8,6 @@
 //= require jquery_ujs
 
 //= require admin/spree_cms
+//= require admin/ckeditor/init
 
 //= require_tree .

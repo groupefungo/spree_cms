@@ -240,3 +240,6 @@ Migrating to AddIdentifierToSpreePayments (20130506162021)
   [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130506162021')[0m
   [1m[35m (0.6ms)[0m  commit transaction
   [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (0.3ms)[0m  [1mSELECT owner_id, owner_type, name, value FROM spree_preferences WHERE 'key' IS NULL[0m
+SQLite3::SQLException: no such table: spree_preferences: SELECT owner_id, owner_type, name, value FROM spree_preferences WHERE 'key' IS NULL

@@ -23,13 +23,4 @@ describe Spree::CmsContent do
     subject.valid?
     subject.errors[:base].should_not include("You must enter either 'Title', 'Text' or 'Image'.")
   end
-
-  it "#text_html" do
-    subject.text = <<-end_eval
-patate
-carotte
-    end_eval
-
-    subject.text_html.should == 'patate<br/>carotte<br/>'
-  end
 end

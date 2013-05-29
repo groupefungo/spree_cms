@@ -5,6 +5,7 @@ module SpreeCms
     engine_name 'spree_cms'
 
     config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
 
     # use rspec for tests
     config.generators do |g|
