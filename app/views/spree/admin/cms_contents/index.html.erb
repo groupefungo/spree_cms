@@ -10,19 +10,15 @@
 
 <table class="index" id="listing_cms_section_cms_contents" data-hook>
   <colgroup>
-    <col style="width: 15%">
     <col style="width: 45%">
-    <col style="width: 10%">
     <col style="width: 10%">
     <col style="width: 5%">
     <col style="width: 15%">
   </colgroup>
   <thead>
   <tr data-hook="admin_section_contents_index_headers">
-    <th>Title</th>
     <th>Text</th>
     <th>Date</th>
-    <th>Image</th>
     <th>Seq</th>
     <th data-hook="admin_section_contents_index_header_actions" class="actions"></th>
   </tr>
@@ -30,14 +26,8 @@
   <tbody>
   <% @cms_section.cms_contents.each do |content| %>
       <tr id="<%= spree_dom_id content %>" data-hook="admin_cms_section_cms_contents_index_rows" class="<%= cycle('odd', 'even') %>">
-        <td class='content_title'><%= content.title %></td>
         <td class='content_text'><%= content.text.blank? ? '' : "#{content.text[0, 100]}..." %></td>
         <td class='content_date_available'><%= content.date_available %></td>
-        <td class='content_image'>
-          <% if content.image_file_name %>
-              <img src="/spree/contenus/<%= content.id %>/small/<%= content.image_file_name %>"/>
-          <% end %>
-        </td>
         <td class='content_seq'><%= content.seq %></td>
         <td data-hook="admin_section_contents_index_row_actions" class="actions">
           <%= link_to_with_icon 'icon-edit', t(:edit), edit_admin_cms_section_cms_content_url(@cms_section, content), :no_text => true, :data => {:action => 'edit'} %>

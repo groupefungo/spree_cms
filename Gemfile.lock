@@ -26,7 +26,7 @@ GIT
 PATH
   remote: .
   specs:
-    spree_cms (1.3.19)
+    spree_cms (1.3.20)
       ckeditor (= 4.0.4)
       paperclip (~> 2.7)
       spree (= 1.3.2)
