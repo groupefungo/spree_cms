@@ -7,7 +7,7 @@ module Spree
       protected
 
       def collection
-        super.sort! {|a,b| a.seq <=> b.seq}
+        super.sort! {|a,b| a.seq||'' <=> b.seq||''}
       end
     end
   end
