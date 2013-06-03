@@ -5,18 +5,6 @@
   <div class="field alpha twelve columns" data-hook="admin_cms_content_form_top"></div>
 
   <div class="left six columns alpha" data-hook="admin_cms_content_form_left">
-    <%= f.field_container :title do %>
-        <%= f.label :title, raw(t(:title)) %>
-        <%= f.text_field :title, :class => 'fullwidth title' %>
-        <%= f.error_message_on :title %>
-    <% end %>
-
-    <%= f.field_container :image do %>
-        <%= f.label :image, raw(t(:image)) %>
-        <%= f.file_field :image, :class => 'fullwidth title' %>
-        <%= f.error_message_on :image %>
-    <% end %>
-
     <%= f.field_container :seq do %>
         <%= f.label :seq, t(:seq) %>
         <%= f.text_field :seq, :class => 'fullwidth' %>
@@ -25,18 +13,11 @@
   </div>
 
   <div class="right six columns omega" data-hook="admin_cms_content_form_right">
-
     <%= f.field_container :date_available do %>
         <%= f.label :seq, t(:date_available) %>
         <%= f.text_field :date_available, :value => datepicker_field_value(@cms_content.date_available), :class => 'fullwidth datepicker' %>
         <%= f.error_message_on :date_available %>
     <% end %>
-
-    <div class="field">
-      <% if @cms_content.image_file_name %>
-          <img src="/spree/contenus/<%= @cms_content.id %>/normal/<%= @cms_content.image_file_name %>"/>
-      <% end %>
-    </div>
   </div>
 
   <div class="field alpha twelve columns" data-hook="admin_cms_content_form_bottom">
