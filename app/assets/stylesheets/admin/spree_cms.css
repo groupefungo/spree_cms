@@ -1,5 +1,6 @@
 /*
  *= require admin/spree_core
+ *= require jquery-ui
 */
 
 .ui-tooltip {
