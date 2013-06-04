@@ -1,3 +1,15 @@
 /*
  *= require admin/spree_core
 */
+
+.ui-tooltip {
+    max-width: 800px;
+}
+
+.cms_content_trigger {
+    text-decoration: underline;
+}
+
+.cms_content_trigger:hover {
+    cursor: pointer;
+}
