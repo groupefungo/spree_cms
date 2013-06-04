@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.name = 'spree_cms'
-  s.version = '1.3.25'
+  s.version = '1.3.26'
   s.summary = 'spree content management'
   s.description = ''
   s.required_ruby_version = '>= 1.8.7'
@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'spree', '1.3.2'
   s.add_dependency 'ckeditor', '4.0.4'
   s.add_dependency 'paperclip', "~> 2.7"
+  s.add_dependency 'jquery-ui-rails'
 
   s.add_development_dependency 'capybara', '~> 1.1.2'
   s.add_development_dependency 'coffee-rails'
