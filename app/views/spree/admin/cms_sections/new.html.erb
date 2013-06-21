@@ -6,6 +6,8 @@
 
       <legend align="center"><%= t(:new_product) %></legend>
 
+      <%= f.hidden_field :app_code, value: ENV['APP_CODE'], :class => 'fullwidth title' %>
+
       <%= f.field_container :code do %>
           <%= f.label :code, t(:code) %> <span class="required">*</span><br/>
           <%= f.text_field :code, :class => 'fullwidth title' %>

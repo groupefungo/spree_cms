@@ -1,12 +1,12 @@
 module SpreeCmsSpecHelper
 
-  def navigate_admin_cms_section_contents(section_code, *contents)
-    create_cms_sections(section_code)
+  def navigate_admin_cms_section_contents(section, *contents)
+    create_cms_sections(section)
 
     if contents
-      section = fetch_cms_section(section_code)
+      db_section = fetch_cms_section(section)
       contents.each do |c|
-        c.cms_section_id = section.id
+        c.cms_section_id = db_section.id
         create_cms_content(c)
       end
     end
@@ -22,8 +22,8 @@ module SpreeCmsSpecHelper
     find('a[data-action="edit"]').click
   end
 
-  def navigate_admin_cms(*section_codes)
-    create_cms_sections(*section_codes)
+  def navigate_admin_cms(*sections)
+    create_cms_sections(*sections)
     navigate_admin
     click_link('Cms')
   end

@@ -19,7 +19,7 @@ module Spree
 =end
 
     def self.find_active_for_section(section_code)
-      section = CmsSection.find_by_code(section_code)
+      section = (CmsSection.where(code: section_code, app_code: ENV['APP_CODE'])||[])[0]
       return section.cms_contents.where("date_available is not null").order('seq asc') if section
       return []
     end

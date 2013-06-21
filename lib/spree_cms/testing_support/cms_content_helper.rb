@@ -27,12 +27,12 @@ module CmsContentHelper
     section.id
   end
 
-  def fetch_cms_section(code)
-    Spree::CmsSection.find_by_code(code)
+  def fetch_cms_section(section)
+    (Spree::CmsSection.where(code: section.code, app_code: section.app_code)||[])[0]
   end
 
-  def create_cms_sections(*codes)
-    codes.each { |c| Spree::CmsSection.find_or_create_by_code(c) }
+  def create_cms_sections(*sections)
+    sections.each { |s| Spree::CmsSection.find_or_create_by_code(code: s.code, app_code: s.app_code) }
   end
 
   def fetch_contents_to_display_for_section(section_code)
