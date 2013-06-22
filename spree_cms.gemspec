@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.name = 'spree_cms'
-  s.version = '1.3.28'
+  s.version = '1.3.30'
   s.summary = 'spree content management'
   s.description = ''
   s.required_ruby_version = '>= 1.8.7'
@@ -11,8 +11,9 @@ Gem::Specification.new do |s|
   s.email = 'nicolaspineault@gmail.com'
   s.homepage = 'http://fungo.ca'
 
-  #s.files       = `git ls-files`.split("\n")
+  s.files = Dir['{config}/**/*']
   #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
+
   s.require_path = 'lib'
   s.requirements << 'none'
 

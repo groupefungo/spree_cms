@@ -18,7 +18,7 @@
   <thead>
   <tr data-hook="admin_section_contents_index_headers">
     <th>Text</th>
-    <th>Date</th>
+    <th>Active?</th>
     <th>Seq</th>
     <th data-hook="admin_section_contents_index_header_actions" class="actions"></th>
   </tr>
@@ -28,9 +28,9 @@
       <tr id="<%= spree_dom_id content %>" data-hook="admin_cms_section_cms_contents_index_rows" class="<%= cycle('odd', 'even') %>">
         <td class='content_text'>
           <div class='cms_content' style='display: none;'><%= content.text.blank? ? '' : content.text_html %></div>
-          <span class='cms_content_trigger'>hover here to see content</span>
+          <span class='cms_content_trigger'>tooltip</span>
         </td>
-        <td class='content_date_available'><%= content.date_available %></td>
+        <td class='content_active'><%= t("content_active_#{content.active?}") %></td>
         <td class='content_seq'><%= content.seq %></td>
         <td data-hook="admin_section_contents_index_row_actions" class="actions">
           <%= link_to_with_icon 'icon-edit', t(:edit), edit_admin_cms_section_cms_content_url(@cms_section, content), :no_text => true, :data => {:action => 'edit'} %>

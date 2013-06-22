@@ -15,7 +15,7 @@ feature 'Cms section contents' do
     db_contents.each do |c|
       within "#listing_cms_section_cms_contents #spree_cms_content_#{c.id}" do
         expect(page).to have_css('.content_text', text: c.text)
-        expect(page).to have_css('.content_date_available', text: c.date_available.to_s)
+        expect(page).to have_css('.content_active', text: I18n.t("content_active_#{c.active?}"))
         expect(page).to have_css('.content_seq', text: c.seq.to_s)
       end
     end
@@ -48,6 +48,7 @@ feature 'Cms section contents' do
 
     expect(page).to have_css('form#edit_cms_content_1')
     expect(page).to have_css('#cms_content_date_available')
+    expect(page).to have_css('#cms_content_expiration_date')
     expect(page).to have_css('#cms_content_text')
     expect(page).to have_css('#cms_content_seq')
   end

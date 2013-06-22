@@ -2,4 +2,6 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  content_active_true: 'Yes'
+  content_active_false: 'No'
+  invalid_date_expiration: Expiration date should be later than date available.

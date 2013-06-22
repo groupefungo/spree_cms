@@ -1,20 +1,11 @@
 module CmsContentHelper
 
   def create_cms_content(content)
-=begin
-    set_image = true if content.set_image.nil?
-    image = nil
-    if set_image
-      image = fixture_file_upload("#{::Rails.root}/spec/fixtures/cms_content_test.png", 'image/png')
-    end
-=end
-
     Spree::CmsContent.create!({
                                   cms_section_id: content.cms_section_id,
                                   text: content.text,
-                                  #title: content.title,
-                                  date_available: content.date_avail||Time.now,
-                                  #image: image,
+                                  date_available: content.date_avail||10.days.ago,
+                                  expiration_date: content.expiration_date||10.days.from_now,
                                   seq: content.seq
                               })
   end
