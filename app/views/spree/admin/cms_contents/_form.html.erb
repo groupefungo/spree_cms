@@ -4,7 +4,7 @@
 
   <div class="field alpha twelve columns" data-hook="admin_cms_content_form_top"></div>
 
-  <div class="left twelve columns" data-hook="admin_cms_content_form_top">
+  <div class="left twelve columns" data-hook="admin_cms_content_form_left">
     <%= f.field_container :seq do %>
         <%= f.label :seq, t(:seq) %>
         <%= f.text_field :seq, :class => 'fullwidth' %>
@@ -12,7 +12,7 @@
     <% end %>
   </div>
 
-  <div class="right six columns alpha" data-hook="admin_cms_content_form_left">
+  <div class="right six columns alpha" data-hook="admin_cms_content_form_left_2">
     <%= f.field_container :date_available do %>
         <%= f.label :seq, t(:date_available) %>
         <%= f.text_field :date_available, :value => datepicker_field_value(@cms_content.date_available), :class => 'fullwidth datepicker' %>
