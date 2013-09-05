@@ -3,7 +3,7 @@ module Spree
     translates :text
     belongs_to :cms_section
 
-    attr_accessible :text, :cms_section_id, :date_available, :seq, :expiration_date
+    attr_accessible :text, :cms_section_id, :date_available, :seq, :expiration_date, :title
 
     validates_presence_of :text
     validates_presence_of :date_available, if: Proc.new {|s| s.expiration_date}
