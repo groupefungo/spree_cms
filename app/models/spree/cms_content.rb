@@ -1,6 +1,6 @@
 module Spree
   class CmsContent < ActiveRecord::Base
-    translates :text
+    translates :text, :title
     belongs_to :cms_section
 
     attr_accessible :text, :cms_section_id, :date_available, :seq, :expiration_date, :title
