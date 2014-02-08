@@ -15,14 +15,12 @@ module Spree
 
       section = (CmsSection.where(code: section_code, app_code: ENV['APP_CODE'])||[])[0]
       contents = section.cms_contents.where("date_available is not null").order('seq asc') if section
-      if contents
-        contents = contents.select {|c| c.active? }
-      end
+      contents = contents.select { |c| c.active? } unless contents.empty?
       return contents
     end
 
     def active?
-      !self.expiration_date || (self.date_available <= Date.today && Date.today <= self.expiration_date )
+      !self.date_available.nil? && self.date_available <= Date.today && (!self.expiration_date || Date.today <= self.expiration_date)
     end
 
     def text_html
